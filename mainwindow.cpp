@@ -18,9 +18,8 @@ MainWindow::~MainWindow()
 
 
 void MainWindow::openFile() {
-    qDebug() << "openFile()";
     auto fileName = QFileDialog::getOpenFileName(this, tr("Open log file"), "", tr("Log file (*.txt)"));
-    qDebug() << fileName;
+
     auto parser= new FileParser(fileName);
     parser->parse();
     delete parser;

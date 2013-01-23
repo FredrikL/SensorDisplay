@@ -4,10 +4,11 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDebug>
+#include <sensorvalue.h>
 
-QHash<QString, QString> FileParser::parse() {
-    QHash<QString, QString> hash;
-
+QHash<QString, QVector<SensorValue>> FileParser::parse() {
+    QHash<QString, QVector<SensorValue>> hash;
+    qDebug() << "file: " << this->fName;
     QFile file(this->fName);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
              return hash;
@@ -22,3 +23,4 @@ QHash<QString, QString> FileParser::parse() {
     qDebug() << count << " lines";
     return hash;
 }
+

@@ -18,6 +18,7 @@ SOURCES += main.cpp\
     fileparser.cpp
 
 HEADERS  += mainwindow.h \
-    fileparser.h
+    fileparser.h \
+    sensorvalue.h
 
 FORMS    += mainwindow.ui
