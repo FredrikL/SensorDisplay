@@ -14,8 +14,10 @@ TEMPLATE = app
 QMAKE_CXXFLAGS += -std=c++11
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    fileparser.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    fileparser.h
 
 FORMS    += mainwindow.ui

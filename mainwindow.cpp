@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <QFileDialog>
+#include "fileparser.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -20,4 +21,7 @@ void MainWindow::openFile() {
     qDebug() << "openFile()";
     auto fileName = QFileDialog::getOpenFileName(this, tr("Open log file"), "", tr("Log file (*.txt)"));
     qDebug() << fileName;
+    auto parser= new FileParser(fileName);
+    parser->parse();
+    delete parser;
 }
