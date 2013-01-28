@@ -18,6 +18,10 @@ QHash<QString, std::vector<SensorValue>> FileParser::parse() {
     QTextStream in(&file);
     QString line = in.readLine();
     while(!line.isNull()){
+        if(line.startsWith(" ;Start Stop;")){
+            auto values = parseRun(&in);
+            qDebug() << "count " << values.size() << ", first itm: " << values[0].getDate();
+        }
         line = in.readLine();
         count++;
     }
@@ -31,10 +35,12 @@ std::vector<SensorValue> FileParser::parseRun(QTextStream *in) {
 
     QString line = in->readLine();
     while(!line.isNull()){
+        qDebug() << line;
         if(line.startsWith(" ;Start Stop;")){
             break;
-        } else {
+        } else if(!line.startsWith(" ")){
             auto value = handleLine(&line);
+            qDebug() << value.getDate();
             r.push_back(value);
         }
 
@@ -46,14 +52,17 @@ std::vector<SensorValue> FileParser::parseRun(QTextStream *in) {
 
 SensorValue& FileParser::handleLine(QString *line) {
     QStringList parts = line->split(";");
-
-    SensorValue v(parts.value(0),
+    QString d = "";
+    d.append(parts.value(0));
+    SensorValue v(d,
                   parts.value(3).toInt(),
                   parts.value(4).toInt(),
                   parts.value(5).toInt(),
                   parts.value(6).toInt(),
                   parts.value(7).toInt(),
                   parts.value(8).toInt());
+
+    qDebug()  << v.getDate();
 
     return v;
 }

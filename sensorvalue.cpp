@@ -1,8 +1,9 @@
 #include <QString>
+#include <QDebug>
 #include "sensorvalue.h"
 
 SensorValue::SensorValue(const SensorValue &other){
-    date = other.date;
+    //date = QString(other.date);
     room = other.room;
     evaporator = other.evaporator;
     sensor1 = other.sensor1;
