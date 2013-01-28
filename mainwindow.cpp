@@ -16,7 +16,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::openFile() {
     auto fileName = QFileDialog::getOpenFileName(this, tr("Open log file"), "", tr("Log file (*.txt)"));
 

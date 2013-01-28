@@ -15,7 +15,8 @@ QMAKE_CXXFLAGS += -std=c++11
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    fileparser.cpp
+    fileparser.cpp \
+    sensorvalue.cpp
 
 HEADERS  += mainwindow.h \
     fileparser.h \
