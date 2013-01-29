@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QHash>
+#include <QString>
+#include <vector>
+#include "sensorvalue.h"
 
 namespace Ui {
 class MainWindow;
@@ -19,6 +23,8 @@ public slots:
     void openFile();
 
 private:
+    void addItemsToListWidget(QHash<QString, std::vector<SensorValue>> items);
+
     Ui::MainWindow *ui;
 };
 

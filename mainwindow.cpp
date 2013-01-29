@@ -2,7 +2,9 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <QFileDialog>
+#include <QListWidget>
 #include "fileparser.h"
+#include "sensorvalue.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -20,6 +22,15 @@ void MainWindow::openFile() {
     auto fileName = QFileDialog::getOpenFileName(this, tr("Open log file"), "", tr("Log file (*.txt)"));
 
     auto parser= new FileParser(fileName);
-    parser->parse();
+    auto result = parser->parse();
     delete parser;
+
+    addItemsToListWidget(result);
 }
+
+void MainWindow::addItemsToListWidget(QHash<QString, std::vector<SensorValue>> items) {
+    QStringList listItems(items.keys());
+
+    ui->lvRuns->insertItems(0, listItems);
+}
+
