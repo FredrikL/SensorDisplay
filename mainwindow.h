@@ -5,6 +5,7 @@
 #include <QHash>
 #include <QString>
 #include <vector>
+#include <QListWidgetItem>
 #include "sensorvalue.h"
 
 namespace Ui {
@@ -21,6 +22,9 @@ public:
     
 public slots:
     void openFile();
+
+private slots:
+    void on_lvRuns_itemClicked(QListWidgetItem *item);
 
 private:
     void addItemsToListWidget(QHash<QString, std::vector<SensorValue>> items);

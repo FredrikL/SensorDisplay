@@ -30,7 +30,12 @@ void MainWindow::openFile() {
 
 void MainWindow::addItemsToListWidget(QHash<QString, std::vector<SensorValue>> items) {
     QStringList listItems(items.keys());
-
+    listItems.sort();
     ui->lvRuns->insertItems(0, listItems);
 }
 
+
+void MainWindow::on_lvRuns_itemClicked(QListWidgetItem *item)
+{
+    qDebug() << item->text();
+}
