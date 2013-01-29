@@ -20,12 +20,14 @@ QHash<QString, std::vector<SensorValue>> FileParser::parse() {
     while(!line.isNull()){
         if(line.startsWith(" ;Start Stop;")){
             auto values = parseRun(&in);
+            hash.insert(QString(count), values);
             qDebug() << "count " << values.size() << ", first itm: " << values[0].getDate();
         }
         line = in.readLine();
         count++;
     }
 
+    qDebug() << "hash size: " << hash.size();
     qDebug() << count << " lines";
     return hash;
 }
@@ -52,9 +54,9 @@ std::vector<SensorValue> FileParser::parseRun(QTextStream *in) {
 
 SensorValue& FileParser::handleLine(QString *line) {
     QStringList parts = line->split(";");
-    QString d = "";
-    d.append(parts.value(0));
-    SensorValue v(d,
+    QString* d = new QString(parts.value(0)); // memleak?
+
+    SensorValue v(*d,
                   parts.value(3).toInt(),
                   parts.value(4).toInt(),
                   parts.value(5).toInt(),
