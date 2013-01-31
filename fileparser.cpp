@@ -19,7 +19,7 @@ QHash<QString, std::vector<SensorValue>> FileParser::parse() {
     while(!line.isNull()){
         if(line.startsWith(" ;Start Stop;")){
             auto values = parseRun(&in);
-            if(values.size() > 0){
+            if(values.size() > 10){ // todo: size to break at ?
                 hash.insert(values[0].getDate(), values);
             }
         }

@@ -45,24 +45,45 @@ void MainWindow::on_lvRuns_itemClicked(QListWidgetItem *item)
 
 void MainWindow::plotValues(std::vector<SensorValue> values) {
 
-    QVector<double> x, y;
-    for (int i=-10; i<110; ++i)
+    QVector<double> y, room, evaporator, s1,s2,s3,s4;
+    for (int i=-25; i<100; ++i)
     {
         y.append(i);
     }
 
     for(SensorValue& v : values){
-        x.append(v.getRoom());
+        room.append(v.getRoom());
+        evaporator.append(v.getEvaporator());
+        s1.append(v.getSensor1());
+        s2.append(v.getSensor2());
+        s3.append(v.getSensor3());
+        s4.append(v.getSensor4());
     }
 
+    ui->graph->clearGraphs();
 
     ui->graph->addGraph();
-    ui->graph->graph(0)->setData(x, y);
-    // give the axes some labels:
+    ui->graph->graph(0)->setData(room, y);
+
+    ui->graph->addGraph();
+    ui->graph->graph(1)->setData(evaporator, y);
+
+    ui->graph->addGraph();
+    ui->graph->graph(2)->setData(s1, y);
+
+    ui->graph->addGraph();
+    ui->graph->graph(3)->setData(s2, y);
+
+    ui->graph->addGraph();
+    ui->graph->graph(4)->setData(s3, y);
+
+    ui->graph->addGraph();
+    ui->graph->graph(5)->setData(s4, y);
+
     ui->graph->xAxis->setLabel("");
     ui->graph->yAxis->setLabel("temp");
-    // set axes ranges, so we see all data:
-    ui->graph->xAxis->setRange(0, 100);
-    ui->graph->yAxis->setRange(-10, 100);
+
+    ui->graph->xAxis->setRange(0, room.size());
+    ui->graph->yAxis->setRange(-25, 100);
     ui->graph->replot();
 }
