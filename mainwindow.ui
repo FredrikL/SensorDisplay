@@ -24,7 +24,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QCustomPlot" name="widget" native="true">
+   <widget class="QCustomPlot" name="graph" native="true">
     <property name="geometry">
      <rect>
       <x>230</x>

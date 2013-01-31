@@ -27,8 +27,10 @@ private slots:
     void on_lvRuns_itemClicked(QListWidgetItem *item);
 
 private:
-    void addItemsToListWidget(QHash<QString, std::vector<SensorValue>> items);
+    void addItemsToListWidget();
+    void plotValues(std::vector<SensorValue>);
 
+    QHash<QString, std::vector<SensorValue>> currentFile;
     Ui::MainWindow *ui;
 };
 
