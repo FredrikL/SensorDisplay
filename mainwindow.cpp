@@ -32,6 +32,9 @@ void MainWindow::openFile() {
 void MainWindow::addItemsToListWidget() {
     QStringList listItems(currentFile.keys());
     listItems.sort();
+
+    for(int k = 0; k < (listItems.size()/2); k++) listItems.swap(k,listItems.size()-(1+k));
+
     ui->lvRuns->insertItems(0, listItems);
 }
 
