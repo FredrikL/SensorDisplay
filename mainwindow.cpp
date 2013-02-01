@@ -37,9 +37,7 @@ void MainWindow::addItemsToListWidget() {
 
 void MainWindow::on_lvRuns_itemClicked(QListWidgetItem *item)
 {
-    qDebug() << item->text();
     auto items = currentFile[item->text()];
-    qDebug() << items[0].getDate();
     plotValues(items);
 }
 
@@ -98,5 +96,9 @@ void MainWindow::plotValues(std::vector<SensorValue> values) {
 
     ui->graph->xAxis->setRange(0, room.size());
     ui->graph->yAxis->setRange(-25, 100);
+
+    ui->graph->yAxis2->setVisible(true);
+    ui->graph->yAxis2->setRange(-25, 100);
+
     ui->graph->replot();
 }
