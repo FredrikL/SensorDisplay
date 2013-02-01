@@ -6,41 +6,67 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>667</width>
-    <height>495</height>
+    <width>854</width>
+    <height>644</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>SensorDisplay</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QListWidget" name="lvRuns">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>201</width>
-      <height>431</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QCustomPlot" name="graph" native="true">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>10</y>
-      <width>411</width>
-      <height>411</height>
-     </rect>
-    </property>
-   </widget>
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetMinAndMaxSize</enum>
+      </property>
+      <item alignment="Qt::AlignLeft">
+       <widget class="QListWidget" name="lvRuns">
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item alignment="Qt::AlignLeft">
+       <widget class="QCustomPlot" name="graph" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>1</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>600</width>
+          <height>0</height>
+         </size>
+        </property>
+        <zorder>lvRuns</zorder>
+        <zorder>lvRuns</zorder>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>667</width>
+     <width>854</width>
      <height>22</height>
     </rect>
    </property>

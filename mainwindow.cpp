@@ -46,10 +46,6 @@ void MainWindow::on_lvRuns_itemClicked(QListWidgetItem *item)
 void MainWindow::plotValues(std::vector<SensorValue> values) {
 
     QVector<double> y, room, evaporator, s1,s2,s3,s4;
-    for (int i=-25; i<100; ++i)
-    {
-        y.append(i);
-    }
 
     for(SensorValue& v : values){
         room.append(v.getRoom());
@@ -60,28 +56,45 @@ void MainWindow::plotValues(std::vector<SensorValue> values) {
         s4.append(v.getSensor4());
     }
 
+    for (int i=0; i<=room.size(); ++i)
+    {
+        y.append(i);
+    }
+
     ui->graph->clearGraphs();
+    ui->graph->legend->setVisible(true);
 
     ui->graph->addGraph();
-    ui->graph->graph(0)->setData(room, y);
+    ui->graph->graph(0)->setData(y, room);
+    ui->graph->graph(0)->setName("Rum");
 
     ui->graph->addGraph();
-    ui->graph->graph(1)->setData(evaporator, y);
+    ui->graph->graph(1)->setData(y, evaporator);
+    ui->graph->graph(1)->setPen(QPen(Qt::red));
+    ui->graph->graph(1)->setName("Förångare");
 
     ui->graph->addGraph();
-    ui->graph->graph(2)->setData(s1, y);
+    ui->graph->graph(2)->setData(y, s1);
+    ui->graph->graph(2)->setPen(QPen(Qt::cyan));
+    ui->graph->graph(2)->setName("Givare 1");
 
     ui->graph->addGraph();
-    ui->graph->graph(3)->setData(s2, y);
+    ui->graph->graph(3)->setData(y, s2);
+    ui->graph->graph(3)->setPen(QPen(Qt::yellow));
+    ui->graph->graph(3)->setName("Givare 2");
 
     ui->graph->addGraph();
-    ui->graph->graph(4)->setData(s3, y);
+    ui->graph->graph(4)->setData(y, s3);
+    ui->graph->graph(4)->setPen(QPen(Qt::magenta));
+    ui->graph->graph(4)->setName("Givare 3");
 
     ui->graph->addGraph();
-    ui->graph->graph(5)->setData(s4, y);
+    ui->graph->graph(5)->setData(y, s4);
+    ui->graph->graph(5)->setPen(QPen(Qt::green));
+    ui->graph->graph(5)->setName("Givare 4");
 
-    ui->graph->xAxis->setLabel("");
-    ui->graph->yAxis->setLabel("temp");
+    ui->graph->xAxis->setLabel("Minuter igång");
+    ui->graph->yAxis->setLabel("Temperatur");
 
     ui->graph->xAxis->setRange(0, room.size());
     ui->graph->yAxis->setRange(-25, 100);
