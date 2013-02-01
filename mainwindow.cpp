@@ -102,3 +102,8 @@ void MainWindow::plotValues(std::vector<SensorValue> values) {
 
     ui->graph->replot();
 }
+
+void MainWindow::on_actionAvsluta_triggered()
+{
+    qApp->exit();
+}

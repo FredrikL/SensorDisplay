@@ -26,6 +26,8 @@ public slots:
 private slots:
     void on_lvRuns_itemClicked(QListWidgetItem *item);
 
+    void on_actionAvsluta_triggered();
+
 private:
     void addItemsToListWidget();
     void plotValues(std::vector<SensorValue>);
