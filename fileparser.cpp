@@ -46,14 +46,14 @@ std::vector<SensorValue> FileParser::parseRun(QTextStream *in) {
     return r;
 }
 
-SensorValue& FileParser::handleLine(QString *line) {
+SensorValue FileParser::handleLine(QString *line) {
     QStringList parts = line->split(";");
     QStringList dt = parts.value(0).split(" ");
     QStringList date = dt.value(0).split("/");
 
     QString* d = new QString(date.value(2) + "-" + date.value(1) + "-" + date.value(0)+ " " + dt.value(2)); // memleak?
 
-    SensorValue v(*d,
+    return SensorValue(*d,
                   parts.value(3).toInt(),
                   parts.value(4).toInt(),
                   parts.value(5).toInt(),
@@ -61,5 +61,5 @@ SensorValue& FileParser::handleLine(QString *line) {
                   parts.value(7).toInt(),
                   parts.value(8).toInt());
 
-    return v;
+    //return v;
 }

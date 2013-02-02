@@ -15,7 +15,7 @@ public:
 
 private:
     std::vector<SensorValue> parseRun(QTextStream*);
-    SensorValue& handleLine(QString *) ;
+    SensorValue handleLine(QString *) ;
 
     QString fName;
     bool recValue;
