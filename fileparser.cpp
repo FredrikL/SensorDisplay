@@ -51,15 +51,13 @@ SensorValue FileParser::handleLine(QString *line) {
     QStringList dt = parts.value(0).split(" ");
     QStringList date = dt.value(0).split("/");
 
-    QString* d = new QString(date.value(2) + "-" + date.value(1) + "-" + date.value(0)+ " " + dt.value(2)); // memleak?
+    auto d = QString(date.value(2) + "-" + date.value(1) + "-" + date.value(0)+ " " + dt.value(2));
 
-    return SensorValue(*d,
+    return SensorValue(d,
                   parts.value(3).toInt(),
                   parts.value(4).toInt(),
                   parts.value(5).toInt(),
                   parts.value(6).toInt(),
                   parts.value(7).toInt(),
                   parts.value(8).toInt());
-
-    //return v;
 }
