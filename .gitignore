@@ -32,4 +32,5 @@ desktop.ini
 *.app
 *.pro.user
 *.pro.user.*
-MakeFile
+Makefile
+MakeFile.*
