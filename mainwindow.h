@@ -24,9 +24,9 @@ public slots:
     void openFile();
 
 private slots:
-    void on_lvRuns_itemClicked(QListWidgetItem *item);
-
     void on_actionAvsluta_triggered();
+
+    void on_lvRuns_itemSelectionChanged();
 
 private:
     void addItemsToListWidget();

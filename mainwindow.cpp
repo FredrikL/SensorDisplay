@@ -38,12 +38,6 @@ void MainWindow::addItemsToListWidget() {
     ui->lvRuns->insertItems(0, listItems);
 }
 
-void MainWindow::on_lvRuns_itemClicked(QListWidgetItem *item)
-{
-    auto items = currentFile[item->text()];
-    plotValues(items);
-}
-
 void MainWindow::plotValues(std::vector<SensorValue> values) {
 
     QVector<double> y, room, evaporator, s1,s2,s3,s4;
@@ -109,4 +103,10 @@ void MainWindow::plotValues(std::vector<SensorValue> values) {
 void MainWindow::on_actionAvsluta_triggered()
 {
     qApp->exit();
+}
+
+void MainWindow::on_lvRuns_itemSelectionChanged()
+{
+    auto items = currentFile[ ui->lvRuns->selectedItems().first()->text()];
+    plotValues(items);
 }
